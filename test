@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>SAC Embedded Story</title>
+    <style>
+        .sac-container {
+            width: 100%;
+            height: 800px;
+            border: none;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Executive Dashboard</h2>
+    
+    <iframe 
+        id="sacFrame"
+        class="sac-container"
+        src="https://getzner.eu10.hcs.cloud.sap/sap/fpa/ui/app.html#/story2&/s2/F9C87E06C4BBEB17C4566B76610499EC/?mode=view"
+        allow="fullscreen">
+    </iframe>
+
+    <script>
+        sap.sac.api.widget.setup({
+            theme: 'sap_horizon',
+            language: 'de'
+        });
+
+        sap.sac.api.widget.renderWidget(document.getElementById("myWidgetContainer"), {
+            tenantUrl: "https://your-tenant.sapanalytics.cloud",
+            storyId: "DEINE_STORY_ID",
+            widgetId: "DEINE_WIDGET_ID",
+            filters: [
+                {
+                    dimensionId: "Dimension",
+                    operator: "equal",
+                    values: ["Wert"]
+                }
+            ],
+            onLoad: function(success) {
+                if (success) {
+                    console.log("Success");
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
